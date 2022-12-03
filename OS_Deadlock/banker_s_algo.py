@@ -1,6 +1,10 @@
 """"
  algorithm to avopid deadlock processes on cpu
   made by Joemar
+  
+  @todo
+    set the maximum resources (a=printer, etc...)
+    calculate the initial work
 """
 
 
@@ -87,5 +91,6 @@ processList.append(Process(1, [2, 0, 0], [3, 2, 2]))
 processList.append(Process(2, [3, 0, 2], [9, 0, 2]))
 processList.append(Process(3, [2, 1, 1], [2, 2, 2]))
 processList.append(Process(4, [0, 0, 2], [4, 3, 3]))
+
 # Do Algo
 algo(processList)
