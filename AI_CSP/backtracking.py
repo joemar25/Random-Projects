@@ -68,13 +68,7 @@ def main():
             if var[0].dom <= var[1].dom:
                 var[0].dom = dom[i]
 
-        for i in range(len(dom)):
-            if var[1].dom == var[2].dom:
-                var[1].dom = dom[i]
-
-        for i in range(len(dom)):
-            if var[0].dom == var[2].dom:
-                var[2].dom = dom[i]
+        var[2].dom = dom[i]
 
         if isSatisfied(var[0].dom, var[1].dom, var[2].dom) == True:
             constraint_satisfied = True
