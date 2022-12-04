@@ -85,12 +85,18 @@ def algo(unsafe):
 
 
 # Main
-processList = []
-processList.append(Process(0, [0, 1, 0], [7, 5, 3], [3, 3, 2]))
-processList.append(Process(1, [2, 0, 0], [3, 2, 2]))
-processList.append(Process(2, [3, 0, 2], [9, 0, 2]))
-processList.append(Process(3, [2, 1, 1], [2, 2, 2]))
-processList.append(Process(4, [0, 0, 2], [4, 3, 3]))
+def main():
+    # list of process
+    plist = []
+    plist.append(Process(0, [0, 1, 0], [7, 5, 3], [3, 3, 2]))
+    plist.append(Process(1, [2, 0, 0], [3, 2, 2]))
+    plist.append(Process(2, [3, 0, 2], [9, 0, 2]))
+    plist.append(Process(3, [2, 1, 1], [2, 2, 2]))
+    plist.append(Process(4, [0, 0, 2], [4, 3, 3]))
 
-# Do Algo
-algo(processList)
+    # Do Algo
+    algo(plist)
+
+
+if __name__ == '__main__':
+    main()
