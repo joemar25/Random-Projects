@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Decryption</title>
+
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Caesar Cipher</h1>
+    <form onsubmit="return validateShift()">
+        <label for="input">Decrypted Input:</label>
+        <input type="text" id="input" name="input"><br><br>
+        <label for="output">Incryted Output:</label>
+        <input type="text" id="output" name="output" readonly><br><br>
+        <label for="shift">Shift Value:</label>
+        <input type="number" id="shift" name="shift" value="3" min="1" pattern="\\d+"><br><br>
+        <button type="button" onclick="encrypt()">Encrypt</button>
+        <button type="button" onclick="decrypt()">Decrypt</button>
+    </form>
+    <script>
+        function validateShift() {
+            let shift = parseInt(document.getElementById('shift').value);
+            if (shift < 1) {
+                return false;
+            }
+            return true;
+        }
+
+        function encrypt() {
+            let input = document.getElementById('input').value;
+            let shift = parseInt(document.getElementById('shift').value);
+            let output = document.getElementById('output');
+            output.value = caesarCipher(input, shift);
+        }
+
+        function decrypt() {
+            let input = document.getElementById('output').value;
+            let shift = parseInt(document.getElementById('shift').value) * -1;
+            let output = document.getElementById('input');
+            output.value = caesarCipher(input, shift);
+        }
+
+        function caesarCipher(str, shift) {
+            let result = '';
+            for (let i = 0; i < str.length; i++) {
+                let charCode = str.charCodeAt(i);
+                if (charCode >= 65 && charCode <= 90) {
+                    result += String.fromCharCode(((charCode - 65 + shift) % 26 + 26) % 26 + 65);
+                } else if (charCode >= 97 && charCode <= 122) {
+                    result += String.fromCharCode(((charCode - 97 + shift) % 26 + 26) % 26 + 97);
+                } else {
+                    result += str.charAt(i);
+                }
+            }
+
+            if (!validateShift()) {
+                alert('Shift value must be a positive number.');
+            }
+
+            input.value = '';
+            return result;
+        }
+    </script>
+</body>
+
+</html>
